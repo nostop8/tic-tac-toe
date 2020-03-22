@@ -14,8 +14,14 @@ $config = [
     'components' => [
         'request' => [
             'baseUrl' => '/api',
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ],
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'lSVfsZ20bDvHfDJTYQiZoZtzNKctIDVk',
+        ],
+        'response' => [
+            'format' => 'json',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -48,6 +54,13 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'v1/game',
+                    'tokens' => [
+                        '{id}' => '<id:[a-z0-9-]{36}>'
+                    ],
+                ]
             ],
         ],
     ],

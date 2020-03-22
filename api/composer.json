@@ -19,7 +19,8 @@
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
         "c006/yii2-migration-utility": "dev-master",
-        "nostop8/rest-api-doc": "^1.1"
+        "nostop8/rest-api-doc": "^1.1",
+        "thamtech/yii2-uuid": "^1.2"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
