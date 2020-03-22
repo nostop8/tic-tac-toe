@@ -67,7 +67,16 @@ if (YII_ENV_DEV) {
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
+        'allowedIPs' => ['*'],
+    ];
+
+    $config['bootstrap'][] = 'documentation';
+    $config['modules']['documentation'] = [
+        'class' => 'nostop8\yii2\rest_api_doc\Module',
+    ];
+
+    $config['modules']['utility'] = [
+        'class' => 'c006\utility\migration\Module',
     ];
 }
 
