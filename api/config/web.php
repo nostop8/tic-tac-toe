@@ -21,7 +21,8 @@ $config = [
             'cookieValidationKey' => 'lSVfsZ20bDvHfDJTYQiZoZtzNKctIDVk',
         ],
         'response' => [
-            'format' => 'json',
+            'class' => 'app\misc\Response',
+            // 'format' => 'json',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
