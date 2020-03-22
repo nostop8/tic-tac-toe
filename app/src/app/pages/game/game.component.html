@@ -1,0 +1,10 @@
+<app-board
+  [@openClose]="isOpen ? 'open' : 'closed'"
+  (cellClicked)="cellClicked($event)"
+  [board]="game.board"
+></app-board>
+<div class="buttons">
+  <button mat-raised-button color="primary" (click)="start()" *ngIf="game.id || !isOpen">
+    {{game.id ? 'Restart Game' : 'Start Game'}}
+  </button>
+</div>

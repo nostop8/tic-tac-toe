@@ -3,6 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  apiUrl: window.location.hostname == 'localhost' ? 'http://tic-tac-toe.my/api/v1/' : `${window.location.protocol}//${window.location.hostname}/api/v1/`,
   production: false
 };
 

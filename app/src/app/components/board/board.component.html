@@ -1,0 +1,11 @@
+<div
+  [ngClass]="{ zero: cell.char == '0', cross: cell.char == 'X' }"
+  class="cell"
+  *ngFor="let cell of cells; let i = index"
+  (click)="click(i)"
+>
+  <div class="circle">
+    <div class="line1"></div>
+    <div class="line2"></div>
+  </div>
+</div>

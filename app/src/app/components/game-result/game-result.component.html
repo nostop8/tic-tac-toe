@@ -1,0 +1,12 @@
+<div class="wrap">
+  <p *ngIf="game.status == 'WIN'">
+    Congrats! You won!
+  </p>
+  <p *ngIf="game.status == 'LOSE'">
+    Sorry, but you're a looser.
+  </p>
+  <p *ngIf="game.status == 'DRAW'">
+    It's draw! How did you do that?
+  </p>
+  <button mat-button color="primary" (click)="dismiss()">OK</button>
+</div>

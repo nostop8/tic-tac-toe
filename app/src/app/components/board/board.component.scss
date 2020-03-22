@@ -1,0 +1,86 @@
+:host {
+  width: 400px;
+  height: 400px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cell {
+  border: 1px solid;
+  width: 33.33%;
+  height: 33.33%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle {
+  .zero & {
+    animation: border 0.5s ease 1 forwards;
+  }
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+}
+
+.line1,
+.line2 {
+  .cross & {
+    animation: line 0.4s ease 1 forwards;
+  }
+  position: absolute;
+  top: 50%;
+  left: 0;
+  border-top: 1px solid blue;
+  transform: rotate(45deg);
+  transform-origin: 50% 50%;
+}
+
+.line2 {
+  transform: rotate(-45deg);
+}
+
+$circle-bg-color: #fff;
+$circle-color: red;
+
+@keyframes border {
+  0% {
+    box-shadow: 60px -60px 0 2px $circle-bg-color,
+      -60px -60px 0 2px $circle-bg-color, -60px 60px 0 2px $circle-bg-color,
+      60px 60px 0 2px $circle-bg-color, 0 0 0 2px $circle-color;
+  }
+  25% {
+    box-shadow: 0 -125px 0 2px $circle-bg-color,
+      -60px -60px 0 2px $circle-bg-color, -60px 60px 0 2px $circle-bg-color,
+      60px 60px 0 2px $circle-bg-color, 0 0 0 2px $circle-color;
+  }
+  50% {
+    box-shadow: 0 -125px 0 2px $circle-bg-color,
+      -125px 0px 0 2px $circle-bg-color, -60px 60px 0 2px $circle-bg-color,
+      60px 60px 0 2px $circle-bg-color, 0 0 0 2px $circle-color;
+  }
+  75% {
+    box-shadow: 0 -125px 0 2px $circle-bg-color,
+      -125px 0px 0 2px $circle-bg-color, 0px 125px 0 2px $circle-bg-color,
+      60px 60px 0 2px $circle-bg-color, 0 0 0 2px $circle-color;
+  }
+  100% {
+    box-shadow: 0 -125px 0 2px $circle-bg-color,
+      -125px 0px 0 2px $circle-bg-color, 0px 125px 0 2px $circle-bg-color,
+      120px 40px 0 2px $circle-bg-color, 0 0 0 2px $circle-color;
+  }
+}
+
+@keyframes line {
+  0% {
+    left: 60px;
+    width: 0;
+  }
+  100% {
+    left: 10px;
+    width: 100px;
+  }
+}
