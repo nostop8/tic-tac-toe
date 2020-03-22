@@ -30,7 +30,7 @@ class Game extends \yii\db\ActiveRecord
             [['id', 'board', 'status'], 'required'],
             [['status'], 'string'],
             [['id'], 'string', 'max' => 36],
-            [['board'], 'string', 'max' => 11],
+            [['board'], 'string', 'max' => 9],
             [['id'], 'unique'],
         ];
     }
