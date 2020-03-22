@@ -12,6 +12,7 @@ class Game extends generated\Game
     const STATUS_RUNNING = 'RUNNING';
     const STATUS_WIN = 'WIN';
     const STATUS_LOSE = 'LOSE';
+    const STATUS_DRAW = 'DRAW';
 
     /**
      * Yii2 style model validation rules.
@@ -23,7 +24,7 @@ class Game extends generated\Game
                 return !$this->isNewRecord;
             }],
 
-            ['status', 'in', 'range' => [self::STATUS_RUNNING, self::STATUS_WIN, self::STATUS_LOSE]],
+            ['status', 'in', 'range' => [self::STATUS_RUNNING, self::STATUS_WIN, self::STATUS_LOSE, self::STATUS_DRAW]],
 
             ['board', function ($attribute) {
                 if ($this->status != self::STATUS_RUNNING) {
@@ -48,22 +49,30 @@ class Game extends generated\Game
         }
 
         // Check if game is completed by client
-        // and in this case set status to WIN
+        // and in this case set status to WIN or DRAW,
         // save game and stop execution.
         $gameHandler = new GameHandler([
             'board' => $this->board,
         ]);
-        if ($gameHandler->getIsComleted()) {
-            $this->status = self::STATUS_WIN;
+        if (($status = $gameHandler->getStatus())) {
+            if ($status == GameHandler::STATUS_LINE) {
+                $this->status = self::STATUS_WIN;
+            } else {
+                $this->status = self::STATUS_DRAW;
+            }
             return parent::save(FALSE, $attributeNames);
         }
 
-        // Make random move by server
+        // Make random move by server.
         $gameHandler->makeRandomMove();
         $this->board = $gameHandler->board;
-        // If game is completed, set status to LOSE.
-        if ($gameHandler->getIsComleted()) {
-            $this->status = self::STATUS_LOSE;
+        // If game is completed, set status to LOSE or DRAW.
+        if (($status = $gameHandler->getStatus())) {
+            if ($status == GameHandler::STATUS_LINE) {
+                $this->status = self::STATUS_LOSE;
+            } else {
+                $this->status = self::STATUS_DRAW;
+            }
         }
         // Save game.
         return parent::save(FALSE, $attributeNames);
