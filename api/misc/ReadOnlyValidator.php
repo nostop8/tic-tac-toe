@@ -10,7 +10,7 @@ class ReadOnlyValidator extends \yii\validators\Validator
     /**
      * 
      * @param ActiveRecord $model
-     * @param type $attribute
+     * @param string $attribute
      */
     public function validateAttribute($model, $attribute)
     {
