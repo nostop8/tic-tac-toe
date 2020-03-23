@@ -2,6 +2,7 @@
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
+$urlRules = require __DIR__ . '/url-rules.php';
 
 $config = [
     'id' => 'basic',
@@ -52,19 +53,7 @@ $config = [
             ],
         ],
         'db' => $db,
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-                [
-                    'class' => 'yii\rest\UrlRule',
-                    'controller' => 'v1/game',
-                    'tokens' => [
-                        '{id}' => '<id:[a-z0-9-]{36}>'
-                    ],
-                ]
-            ],
-        ],
+        'urlManager' => $urlRules,
     ],
     'params' => $params,
 ];

@@ -1,6 +1,7 @@
 <?php
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/test_db.php';
+$urlRules = require __DIR__ . '/url-rules.php';
 
 /**
  * Application configuration shared by all test types
@@ -21,21 +22,21 @@ return [
         'assetManager' => [
             'basePath' => __DIR__ . '/../web/assets',
         ],
-        'urlManager' => [
-            'showScriptName' => true,
-        ],
+        'urlManager' => $urlRules,
         'user' => [
             'identityClass' => 'app\models\User',
         ],
         'request' => [
-            'cookieValidationKey' => 'test',
-            'enableCsrfValidation' => false,
-            // but if you absolutely need it set cookie domain to localhost
-            /*
-            'csrfCookie' => [
-                'domain' => 'localhost',
+            'baseUrl' => '/api',
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
             ],
-            */
+            // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
+            'cookieValidationKey' => 'lSVfsZ20bDvHfDJTYQiZoZtzNKctIDVk',
+        ],
+        'response' => [
+            'class' => 'app\misc\Response',
+            // 'format' => 'json',
         ],
     ],
     'params' => $params,
