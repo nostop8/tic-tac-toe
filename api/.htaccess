@@ -16,7 +16,7 @@
     RewriteRule ^(.*)$ $1 [R=200,L,E=HTTP_ORIGIN:%{HTTP:ORIGIN}]]
 </IfModule> 
 
-Header always set Access-Control-Allow-Origin "localhost"
+Header always set Access-Control-Allow-Origin "*"
 Header always set Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, PATCH, DELETE"
 Header always set Access-Control-Allow-Headers "X-Accept-Charset,X-Accept,Content-Type,Authorization,X-Pagination-Current-Page,X-Pagination-Page-Count,X-Pagination-Per-Page,X-Pagination-Total-Count,API-Version"
 Header always set Access-Control-Expose-Headers "X-Accept-Charset,X-Accept,Content-Type,Authorization,X-Pagination-Current-Page,X-Pagination-Page-Count,X-Pagination-Per-Page,X-Pagination-Total-Count,API-Version"
