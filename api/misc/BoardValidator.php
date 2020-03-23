@@ -13,12 +13,12 @@ class BoardValidator extends \yii\validators\Validator
      */
     public function validateAttribute($model, $attribute)
     {
-        $gameHandler = new GameHandler([
-            'board' => $model->isNewRecord ? GameHandler::getEmptyBoard() : $model->getOldAttribute($attribute),
+        $boardHandler = new BoardHandler([
+            'board' => $model->isNewRecord ? BoardHandler::getEmptyBoard() : $model->getOldAttribute($attribute),
         ]);
 
         try {
-            $gameHandler->changeState($model->{$attribute});
+            $boardHandler->changeState($model->{$attribute});
         } catch (GameException $ex) {
             $this->addError($model, $attribute, $ex->getMessage());
         }

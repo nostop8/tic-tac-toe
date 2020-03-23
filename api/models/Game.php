@@ -3,7 +3,7 @@
 namespace app\models;
 
 use app\misc\BoardValidator;
-use app\misc\GameHandler;
+use app\misc\BoardHandler;
 use app\misc\ReadOnlyValidator;
 use Yii;
 
@@ -51,11 +51,11 @@ class Game extends generated\Game
         // Check if game is completed by client
         // and in this case set status to WIN or DRAW,
         // save game and stop execution.
-        $gameHandler = new GameHandler([
+        $boardHandler = new BoardHandler([
             'board' => $this->board,
         ]);
-        if (($status = $gameHandler->getStatus())) {
-            if ($status == GameHandler::STATUS_COMPLETED_LINE) {
+        if (($status = $boardHandler->getStatus())) {
+            if ($status == BoardHandler::STATUS_COMPLETED_LINE) {
                 $this->status = self::STATUS_WIN;
             } else {
                 $this->status = self::STATUS_DRAW;
@@ -64,11 +64,11 @@ class Game extends generated\Game
         }
 
         // Make random move by server.
-        $gameHandler->makeRandomMove();
-        $this->board = $gameHandler->board;
+        $boardHandler->makeRandomMove();
+        $this->board = $boardHandler->board;
         // If game is completed, set status to LOSE or DRAW.
-        if (($status = $gameHandler->getStatus())) {
-            if ($status == GameHandler::STATUS_COMPLETED_LINE) {
+        if (($status = $boardHandler->getStatus())) {
+            if ($status == BoardHandler::STATUS_COMPLETED_LINE) {
                 $this->status = self::STATUS_LOSE;
             } else {
                 $this->status = self::STATUS_DRAW;

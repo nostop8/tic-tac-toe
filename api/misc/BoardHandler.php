@@ -5,7 +5,7 @@ namespace app\misc;
 use Yii;
 use yii\base\BaseObject;
 
-class GameHandler extends BaseObject
+class BoardHandler extends BaseObject
 {
     const STATUS_COMPLETED_LINE = 'line';
     const STATUS_NO_MOVES_LEFT = 'no_moves_left';
