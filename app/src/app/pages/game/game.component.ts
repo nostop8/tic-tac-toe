@@ -36,6 +36,7 @@ export class GameComponent implements OnInit {
   isOpen = false;
   game = new Game;
   modalRef: MatDialogRef<GameResultComponent>;
+  loading = false;
 
   @ViewChild(BoardComponent) board: BoardComponent;
 
@@ -59,6 +60,11 @@ export class GameComponent implements OnInit {
     if (this.game.board.charAt(cellIndex) != '-') {
       return;
     }
+    if (this.loading) {
+      return;
+    }
+
+    this.loading = true;
 
     this.game.board = this.game.board.substr(0, cellIndex) + 'X' + this.game.board.substr(cellIndex + 1);
     let promise: Promise<Game>;
@@ -70,9 +76,11 @@ export class GameComponent implements OnInit {
     promise.then(game => {
       setTimeout(() => {
         this.updateGame(game);
+        this.loading = false;
       }, 500);
     }).catch((e: HttpErrorResponse) => {
       this.snackBarService.open(`Remote error occured: ${e.message}`, 'OK');
+      this.loading = false;
     });
   }
 
