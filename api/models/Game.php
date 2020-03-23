@@ -32,7 +32,11 @@ class Game extends generated\Game
                 }
             }],
             ['board', 'match', 'pattern' => '/[X0-]{9}/'],
+            ['board', 'match', 'pattern' => '/[X-]{9}/', 'when' => function () {
+                return $this->isNewRecord;
+            }, 'message' => Yii::t('app', 'Game should always start using "X" character.')],
             ['board', BoardValidator::class],
+
         ]);
     }
 
