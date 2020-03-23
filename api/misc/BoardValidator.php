@@ -19,7 +19,7 @@ class BoardValidator extends \yii\validators\Validator
 
         try {
             $boardHandler->changeState($model->{$attribute});
-        } catch (GameException $ex) {
+        } catch (BoardException $ex) {
             $this->addError($model, $attribute, $ex->getMessage());
         }
     }

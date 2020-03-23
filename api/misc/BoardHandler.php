@@ -62,17 +62,17 @@ class BoardHandler extends BaseObject
     {
         // Make sure 1 move has been made.
         if (empty($this->boardNewMoves)) {
-            throw new GameException(Yii::t('app', 'No move detected.'));
+            throw new BoardException(Yii::t('app', 'No move detected.'));
         }
         // Make sure 1 move has been made.
         if (count($this->boardNewMoves) > 1) {
-            throw new GameException(Yii::t('app', 'Only one move per request allowed.'));
+            throw new BoardException(Yii::t('app', 'Only one move per request allowed.'));
         }
 
         // Make sure proper character used.
         $allowedCharacter = $this->moveCharacterMap[($this->getTotalMoves() + 1) % 2];
         if (($moveCharacter = $this->getNewMoveCharacter()) != $allowedCharacter) {
-            throw new GameException(Yii::t('app', 'You have to use character "{allowedCharacter}" instead of "{moveCharacter}"', [
+            throw new BoardException(Yii::t('app', 'You have to use character "{allowedCharacter}" instead of "{moveCharacter}"', [
                 'allowedCharacter' => $allowedCharacter,
                 'moveCharacter' => $moveCharacter,
             ]));
@@ -80,7 +80,7 @@ class BoardHandler extends BaseObject
 
         // Make sure that character has been placed into the proper position (not overriding existing).
         if (in_array($this->boardArr[$this->getNewMovePosition()], $this->moveCharacterMap)) {
-            throw new GameException(Yii::t('app', 'You are not allowed to override existing moves.'));
+            throw new BoardException(Yii::t('app', 'You are not allowed to override existing moves.'));
         }
     }
 
