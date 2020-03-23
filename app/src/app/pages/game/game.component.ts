@@ -5,6 +5,8 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { Game } from 'src/app/models/game';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { GameResultComponent } from 'src/app/components/game-result/game-result.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-game',
@@ -40,6 +42,7 @@ export class GameComponent implements OnInit {
   constructor(
     private gameService: GameService,
     private dialog: MatDialog,
+    private snackBarService: MatSnackBar,
   ) { }
 
   ngOnInit(): void {
@@ -68,6 +71,8 @@ export class GameComponent implements OnInit {
       setTimeout(() => {
         this.updateGame(game);
       }, 500);
+    }).catch((e: HttpErrorResponse) => {
+      this.snackBarService.open(`Remote error occured: ${e.message}`, 'OK');
     });
   }
 

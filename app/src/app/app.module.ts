@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { BoardComponent } from './components/board/board.component';
 import { GameComponent } from './pages/game/game.component';
@@ -29,6 +30,7 @@ import { GameResultComponent } from './components/game-result/game-result.compon
     MatToolbarModule,
     MatButtonModule,
     MatDialogModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
