@@ -55,7 +55,7 @@ class Game extends generated\Game
             'board' => $this->board,
         ]);
         if (($status = $gameHandler->getStatus())) {
-            if ($status == GameHandler::STATUS_LINE) {
+            if ($status == GameHandler::STATUS_COMPLETED_LINE) {
                 $this->status = self::STATUS_WIN;
             } else {
                 $this->status = self::STATUS_DRAW;
@@ -68,7 +68,7 @@ class Game extends generated\Game
         $this->board = $gameHandler->board;
         // If game is completed, set status to LOSE or DRAW.
         if (($status = $gameHandler->getStatus())) {
-            if ($status == GameHandler::STATUS_LINE) {
+            if ($status == GameHandler::STATUS_COMPLETED_LINE) {
                 $this->status = self::STATUS_LOSE;
             } else {
                 $this->status = self::STATUS_DRAW;

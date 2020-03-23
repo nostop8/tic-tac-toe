@@ -7,8 +7,8 @@ use yii\base\BaseObject;
 
 class GameHandler extends BaseObject
 {
-    const STATUS_LINE = 'line';
-    const STATUS_COMPLETED = 'completed';
+    const STATUS_COMPLETED_LINE = 'line';
+    const STATUS_NO_MOVES_LEFT = 'no_moves_left';
 
     const DIMENSION = 3;
     const EMPTY_CHARACTER = '-';
@@ -170,10 +170,10 @@ class GameHandler extends BaseObject
     public function getStatus()
     {
         if ($this->hasLine()) {
-            return self::STATUS_LINE;
+            return self::STATUS_COMPLETED_LINE;
         }
         if ($this->getTotalMoves() == self::DIMENSION * self::DIMENSION) {
-            return self::STATUS_COMPLETED;
+            return self::STATUS_NO_MOVES_LEFT;
         }
     }
 
