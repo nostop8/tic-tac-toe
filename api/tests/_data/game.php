@@ -17,6 +17,12 @@ return [
     [
         'id' => '907e6592-b2cf-4dc1-b282-b141735952ad',
         'status' => 'RUNNING',
-        'board' => '-XXXX00-0', // => -XXXX0000
+        'board' => '00-0XX-X-', // => 00-0XX-XX
+    ],
+    // completed draw
+    [
+        'id' => '96d3e336-71df-4877-a7fb-3689484167f7',
+        'status' => 'DRAW',
+        'board' => '0XXXX000X', // => 0XXXX000X
     ],
 ];

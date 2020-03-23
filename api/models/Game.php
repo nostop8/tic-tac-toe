@@ -75,6 +75,8 @@ class Game extends generated\Game
             if ($status == BoardHandler::STATUS_COMPLETED_LINE) {
                 $this->status = self::STATUS_LOSE;
             } else {
+                // This case is turns our to be not possible when 
+                // client always starts.
                 $this->status = self::STATUS_DRAW;
             }
         }

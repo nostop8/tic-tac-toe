@@ -56,8 +56,16 @@ class GameModelTest extends Unit
     public function testLose()
     {
         $game = Game::findOne('907e6592-b2cf-4dc1-b282-b141735952ad');
-        $game->board = '-XXXX0000';
+        $game->board = '00-0XX-XX';
         $game->save();
-        expect($game->status)->equals(Game::STATUS_WIN);
+        expect($game->status)->equals(Game::STATUS_LOSE);
+    }
+
+    public function testAlreadyCompleted()
+    {
+        $game = Game::findOne('96d3e336-71df-4877-a7fb-3689484167f7');
+        $game->board = '0XXXX000X';
+        expect($game->save())->equals(FALSE);
+        expect($game->getFirstError('board'))->equals('The game is already completed.');
     }
 }

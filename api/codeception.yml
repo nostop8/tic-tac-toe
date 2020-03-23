@@ -12,6 +12,12 @@ modules:
     config:
         Yii2:
             configFile: 'config/test.php'
+coverage:
+    enabled: true
+    include:
+        - controllers/*
+        - models/*
+        - misc/*
 
 # To enable code coverage:
 #coverage:
