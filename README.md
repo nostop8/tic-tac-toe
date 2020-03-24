@@ -42,9 +42,9 @@ This command will also generate coverage reports inside the `api/tests/_output/c
  
 #### Installation instructions
 
-- Run `cd api`
+- Run `cd app`
 - Run `npm i`
-- Open file `app/src/environments/environment.ts` and adjust `apiUrl` property to your own virtual host (for REST API)
+- Open file `app/src/environments/environment.ts` and adjust `apiUrl` property to your own virtual host (to REST API)
 - Run `ng serve`
 - Open browser and goto `http://localhost:4200`
 - Play the game
