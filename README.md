@@ -18,7 +18,7 @@ There are 2 folders: `api` (stands for REST API) and `app` (client web app)
 - Edit `config/db.php` and `config/test_db.php` files: make sure that `db_name` is set to your newly created databases and set your MySQL host, user and pass
 - Run `cd api`
 - Run `composer install`
-- Make sure that folder `runtime` has permissions set to `0777` and `yii` file permissions are set to `0755` (if you are on Unix like machine)
+- Make sure that folders `runtime` and `web/assets` (and files inside) has permissions set to `0777` and `yii` file permissions are set to `0755` (if you are on Unix like machine)
 - Run `yii migrate` and `yii_test migrate`. This will create game tables in your databases.
 
 
